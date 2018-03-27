@@ -1,44 +1,34 @@
-# vueAdmin-template
+# 作业盒子磐石平台（盒图）
+***说明：***
+磐石系统是公司大数据分析的基础平台
+## Environment
 
-> A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
+`Node >= 6`
 
-**Live demo:** http://panjiachen.github.io/vueAdmin-template
+## Start
 
-[中文文档](https://github.com/PanJiaChen/vueAdmin-template/blob/master/README-zh.md)
+ - Clone or download this repository
+ - Enter your local directory, and install dependencies:
 
-## Build Setup
 
 ``` bash
-
-# Clone project
-git clone https://github.com/PanJiaChen/vueAdmin-template.git
-
-# Install dependencies
-npm install
-
-# serve with hot reload at localhost:9528
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+yarn
 ```
 
-## Demo
-![demo](https://github.com/PanJiaChen/PanJiaChen.github.io/blob/master/images/demo.gif)
+## Develop
 
-## Extra
-If you want router permission && generate menu by user roles , you can use this branch [permission-control](https://github.com/PanJiaChen/vueAdmin-template/tree/permission-control)
+``` bash
+# serve with hot reload at localhost:8010
+npm run dev
+```
 
-## Related Project
- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
+## Build
 
- [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
+``` bash
+# build for production with minification
+npm run build   
+npm run build:all
+```
 
-
-## License
-[MIT](https://github.com/PanJiaChen/vueAdmin-template/blob/master/LICENSE) license.
-
-Copyright (c) 2017-present PanJiaChen
+## V1.0
+1.0版本首先为管理层人员提供最核心的顶层指标数据分析和可视化展现
