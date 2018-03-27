@@ -6,6 +6,9 @@
   "author": "Alec <aleczhang@163.com>",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "pre": " rimraf dist/preview &&   webpack --config build/webpack.pre.conf.js --colors --progress",
+    "pro": "rimraf dist/production &&    webpack --config build/webpack.prod.conf.js --colors --progress",
+    "build:all": "npm run pre && npm run pro",
     "start": "npm run dev",
     "build": "node build/build.js",
     "build:report": "npm_config_report=true node build/build.js",

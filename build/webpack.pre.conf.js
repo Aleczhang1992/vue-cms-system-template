@@ -15,19 +15,19 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-const env = require('../config/prod.env')
+const env = require('../config/pre.env')
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
-      sourceMap: config.production.productionSourceMap,
+      sourceMap: config.preview.productionSourceMap,
       extract: true,
       usePostCSS: true
     })
   },
-  devtool: config.production.productionSourceMap ? config.production.devtool : false,
+  devtool: config.preview.productionSourceMap ? config.preview.devtool : false,
   output: {
-    path: config.production.assetsRoot,
+    path: config.preview.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
@@ -42,7 +42,7 @@ const webpackConfig = merge(baseWebpackConfig, {
           warnings: false
         }
       },
-      sourceMap: config.production.productionSourceMap,
+      sourceMap: config.preview.productionSourceMap,
       parallel: true
     }),
     // extract css into its own file
@@ -56,7 +56,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
-      cssProcessorOptions: config.production.productionSourceMap
+      cssProcessorOptions: config.preview.productionSourceMap
         ? { safe: true, map: { inline: false } }
         : { safe: true }
     }),
@@ -64,7 +64,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: config.production.index,
+      filename: config.preview.index,
       template: 'index.html',
       inject: true,
       favicon: resolve('favicon.ico'),
@@ -117,14 +117,14 @@ const webpackConfig = merge(baseWebpackConfig, {
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),
-        to: config.production.assetsSubDirectory,
+        to: config.preview.assetsSubDirectory,
         ignore: ['.*']
       }
     ])
   ]
 })
 
-if (config.production.productionGzip) {
+if (config.preview.productionGzip) {
   const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
   webpackConfig.plugins.push(
@@ -133,7 +133,7 @@ if (config.production.productionGzip) {
       algorithm: 'gzip',
       test: new RegExp(
         '\\.(' +
-        config.production.productionGzipExtensions.join('|') +
+        config.preview.productionGzipExtensions.join('|') +
         ')$'
       ),
       threshold: 10240,
@@ -142,7 +142,7 @@ if (config.production.productionGzip) {
   )
 }
 
-if (config.production.bundleAnalyzerReport) {
+if (config.preview.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
